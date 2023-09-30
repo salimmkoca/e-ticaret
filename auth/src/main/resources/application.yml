@@ -1,0 +1,42 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: auth
+  cloud:
+    discovery:
+      enabled: true
+  main:
+      allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/jak_09_auth?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: Salim.1325k
+    hikari:
+      connection-timeout: 3000000
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+sr:
+  rabbit:
+    exchange: GeneralExchangeQueue
+    queue: GeneralNotificationQueue
+    routing: GeneralRoutingQueue
+
+
+
+
